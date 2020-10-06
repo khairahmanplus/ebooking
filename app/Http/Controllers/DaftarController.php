@@ -23,21 +23,27 @@ class DaftarController extends Controller
         // Validation
         $request->validate([
             'nama' => [
-                'required'
+                'required',
+                'alpha',
+                'max:100'
             ],
             'no_kad_pengenalan' => [
                 'required',
+                'size:12',
+                'regex:/^[0-9]{6}[0-9]{2}[0-9]{4}$/'
             ],
             'bahagian' => [
                 'required',
                 Rule::in(Bahagian::pluck('id'))
             ],
             'no_telefon' => [
-                'required'
+                'required',
+                'max:12'
             ],
             'emel' => [
                 'required',
-                'email'
+                'email',
+                'max:100'
             ],
         ]);
 
