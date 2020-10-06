@@ -19,7 +19,7 @@ class CreatePenggunaTable extends Migration
             $table->string('no_kad_pengenalan', 12);
             $table->unsignedInteger('id_bahagian');
             $table->string('no_tel')->nullable();
-            $table->string('emel');
+            $table->string('emel')->unique();
             $table->string('kata_laluan');
         });
     }
