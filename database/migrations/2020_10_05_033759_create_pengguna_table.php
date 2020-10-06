@@ -21,6 +21,7 @@ class CreatePenggunaTable extends Migration
             $table->string('no_tel')->nullable();
             $table->string('emel')->unique();
             $table->string('kata_laluan');
+            $table->boolean('kemaskini_kata_laluan')->default(true);
         });
     }
 
