@@ -53,7 +53,7 @@ class DaftarController extends Controller
 
         // Insert Data
         // insert into pengguna (columns) values ()
-        Pengguna::create([
+        $pengguna = Pengguna::create([
             'nama'              => $request->input('nama'),
             'no_kad_pengenalan' => $request->input('no_kad_pengenalan'),
             'id_bahagian'       => $request->input('bahagian'),
@@ -63,8 +63,11 @@ class DaftarController extends Controller
         
         // Flash message
         session()->flash('mesej_aplikasi', 'Maklumat berjaya didaftarkan.');
+        // session()->flash('mesej_aplikasi_class', 'alert-warning');
 
-        // Redirect
-        return back();
+        // Kebalikan view untuk pengesahan kemasukan data
+        return view('auth.daftar-berjaya', [
+            'pengguna' => $pengguna
+        ]);
     }
 }

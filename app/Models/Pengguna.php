@@ -14,4 +14,9 @@ class Pengguna extends Model
     public $timestamps = false;
 
     protected $guarded = [];
+
+    public function bahagian()
+    {
+        return $this->belongsTo(Bahagian::class, 'id_bahagian', 'id')->withDefault();
+    }
 }
