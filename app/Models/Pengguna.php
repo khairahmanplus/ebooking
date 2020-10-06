@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pengguna extends Model
 {
     use HasFactory;
+
+    protected $table = 'pengguna';
+
+    public $timestamps = false;
+
+    protected $guarded = [];
 }
