@@ -60,7 +60,11 @@ class DaftarController extends Controller
             'no_tel'            => $request->input('no_telefon'),
             'emel'              => $request->input('emel'),
         ]);
+        
+        // Flash message
+        session()->flash('mesej_aplikasi', 'Maklumat berjaya didaftarkan.');
+
         // Redirect
-        return redirect('/');
+        return back();
     }
 }

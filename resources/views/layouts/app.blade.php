@@ -33,6 +33,14 @@
         </div>     
     </nav>
 
+    @if (session()->has('mesej_aplikasi'))
+        <div class="alert {{ session()->has('mesej_aplikasi_class') ? session('mesej_aplikasi_class') : 'alert-success' }}">
+            <div class="container">
+                {{ session('mesej_aplikasi') }}
+            </div>
+        </div>
+    @endif
+
     <main class="my-5">@yield('content')</main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
