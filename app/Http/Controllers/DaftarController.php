@@ -30,7 +30,8 @@ class DaftarController extends Controller
             'no_kad_pengenalan' => [
                 'required',
                 'size:12',
-                'regex:/^[0-9]{6}[0-9]{2}[0-9]{4}$/'
+                'regex:/^[0-9]{6}[0-9]{2}[0-9]{4}$/',
+                'unique:pengguna,no_kad_pengenalan'
             ],
             'bahagian' => [
                 'required',
