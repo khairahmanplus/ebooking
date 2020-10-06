@@ -24,7 +24,7 @@ class DaftarController extends Controller
         $request->validate([
             'nama' => [
                 'required',
-                'alpha',
+                'string',
                 'max:100'
             ],
             'no_kad_pengenalan' => [
@@ -43,7 +43,8 @@ class DaftarController extends Controller
             'emel' => [
                 'required',
                 'email',
-                'max:100'
+                'max:100',
+                'unique:pengguna,emel'
             ],
         ]);
 
