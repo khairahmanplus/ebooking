@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Bahagian;
 use Illuminate\Validation\Rule;
 use App\Models\Pengguna;
+use App\Notifications\PendaftaranBerjaya;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class DaftarController extends Controller
@@ -53,13 +55,21 @@ class DaftarController extends Controller
 
         // Insert Data
         // insert into pengguna (columns) values ()
+        $kata_laluan = 'password' . Str::substr($request->input('no_kad_pengenalan'), 8, 12);
+            
         $pengguna = Pengguna::create([
             'nama'              => $request->input('nama'),
             'no_kad_pengenalan' => $request->input('no_kad_pengenalan'),
             'id_bahagian'       => $request->input('bahagian'),
             'no_tel'            => $request->input('no_telefon'),
             'emel'              => $request->input('emel'),
+            'kata_laluan'       => Hash::make($kata_laluan)
         ]);
+
+        $emel = $pengguna->emel;
+
+        // Notifikasi
+        $pengguna->notify(new PendaftaranBerjaya($emel, $kata_laluan)); 
         
         // Flash message
         session()->flash('mesej_aplikasi', 'Maklumat berjaya didaftarkan.');

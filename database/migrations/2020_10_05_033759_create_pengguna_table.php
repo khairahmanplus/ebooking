@@ -14,9 +14,8 @@ class CreatePenggunaTable extends Migration
     public function up()
     {
         Schema::create('pengguna', function (Blueprint $table) {
-            $table->id();
+            $table->string('no_kad_pengenalan', 12)->primary();
             $table->string('nama');
-            $table->string('no_kad_pengenalan', 12);
             $table->unsignedInteger('id_bahagian');
             $table->string('no_tel')->nullable();
             $table->string('emel')->unique();
