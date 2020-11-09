@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="my-5">Tambah Bilik Baru</h1>
-
+        
         <form action="{{ route('bilik.store') }}" method="post">
             @csrf
             <div class="form-group row">
@@ -25,10 +25,13 @@
                     <strong class="text-danger">*</strong>
                 </label>
                 <div class="col-md-6">
-                    <select class="form-control" name="bahagian">
+                    <select class="form-control @error('bahagian') is-invalid @enderror" name="bahagian">
                         <option disabled selected>Sila Pilih</option>
+                        @foreach ($senaraiBahagian as $bahagian)
+                            <option value="{{ $bahagian->id }}" {{ $bahagian->id == old('bahagian') ? 'selected' : null }}>{{ $bahagian->nama }}</option>
+                        @endforeach
                     </select>
-                    @error('nama')
+                    @error('bahagian')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

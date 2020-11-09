@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bahagian;
+use App\Models\Bilik;
 use Illuminate\Http\Request;
 
 class BilikController extends Controller
@@ -23,7 +25,11 @@ class BilikController extends Controller
      */
     public function create()
     {
-        return view('bilik.create');
+        $senaraiBahagian = Bahagian::orderBy('nama', 'desc')->get();
+
+        return view('bilik.create', [
+            'senaraiBahagian' => $senaraiBahagian
+        ]);
     }
 
     /**
@@ -34,7 +40,28 @@ class BilikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        $request->validate([
+            'nama' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+            'bahagian' => [
+                'required',
+            ]
+        ]);
+        
+        // Masukkan data ke dalam table bilik
+        // INSERT INTO bilik (nama, id_bahagian, id_pengguna) VALUES ()
+        Bilik::create([
+            'nama'          => $request->input('bilik'),
+            'id_bahagian'   => $request->input('bahagian'),
+            'id_pengguna'   => auth()->id()
+        ]);
+
+        // Redirect ke halaman senarai bilik
+        redirect()->route('bilik.index');
     }
 
     /**
