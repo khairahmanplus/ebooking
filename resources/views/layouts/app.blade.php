@@ -33,8 +33,11 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('log-keluar') }}">Log keluar</a>
+                            <a class="nav-link" href="{{ route('log-keluar') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Keluar</a>
                         </li>
+                        <form id="logout-form" action="{{ route('log-keluar') }}" method="post">
+                            @csrf
+                        </form>
                     @endguest
                 </ul>
             </div>    
