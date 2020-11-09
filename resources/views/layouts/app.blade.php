@@ -17,17 +17,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                    @endauth
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('daftar.papar') }}">Daftar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('log-masuk.papar') }}">Log Masuk</a>
-                    </li>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('daftar.papar') }}">Daftar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('log-masuk.papar') }}">Log Masuk</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('log-keluar') }}">Log keluar</a>
+                        </li>
+                    @endguest
                 </ul>
             </div>    
         </div>     

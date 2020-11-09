@@ -34,7 +34,7 @@
                     <strong class="text-danger">*</strong>
                 </label>
                 <div class="col-md-6">
-                    <input class="form-control @error('kata_laluan') is-invalid @enderror" type="text" name="kata_laluan" value="{{ old('kata_laluan') }}">
+                    <input class="form-control @error('kata_laluan') is-invalid @enderror" type="password" name="kata_laluan" value="{{ old('kata_laluan') }}">
                     @error('kata_laluan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
