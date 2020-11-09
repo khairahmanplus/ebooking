@@ -11,4 +11,14 @@ class Bilik extends Model
 
     protected $table = 'bilik';
     protected $guarded = [];
+
+    public function bahagian()
+    {
+        return $this->belongsTo(Bahagian::class, 'id_bahagian', 'id');
+    }
+
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class, 'id_pengguna', 'no_kad_pengenalan');
+    }
 }

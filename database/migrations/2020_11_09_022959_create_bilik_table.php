@@ -16,8 +16,8 @@ class CreateBilikTable extends Migration
         Schema::create('bilik', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('bahagian_id');
-            $table->foreignId('pengguna_id');
+            $table->foreignId('id_bahagian');
+            $table->foreignId('id_pengguna');
             $table->timestamps();
         });
     }

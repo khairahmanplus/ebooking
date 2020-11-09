@@ -15,7 +15,11 @@ class BilikController extends Controller
      */
     public function index()
     {
-        return view('bilik.index');
+        $senaraiBilik = Bilik::get();
+
+        return view('bilik.index', [
+            'senaraiBilik' => $senaraiBilik
+        ]);
     }
 
     /**
@@ -55,13 +59,13 @@ class BilikController extends Controller
         // Masukkan data ke dalam table bilik
         // INSERT INTO bilik (nama, id_bahagian, id_pengguna) VALUES ()
         Bilik::create([
-            'nama'          => $request->input('bilik'),
+            'nama'          => $request->input('nama'),
             'id_bahagian'   => $request->input('bahagian'),
             'id_pengguna'   => auth()->id()
         ]);
 
         // Redirect ke halaman senarai bilik
-        redirect()->route('bilik.index');
+        return redirect()->route('bilik.index');
     }
 
     /**
