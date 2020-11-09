@@ -135,6 +135,10 @@ class BilikController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bilik = Bilik::find($id);
+
+        $bilik->delete();
+
+        return back();
     }
 }
