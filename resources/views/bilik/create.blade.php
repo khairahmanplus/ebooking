@@ -26,7 +26,7 @@
                 </label>
                 <div class="col-md-6">
                     <select class="form-control" name="bahagian">
-
+                        <option disabled selected>Sila Pilih</option>
                     </select>
                     @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
