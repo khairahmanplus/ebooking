@@ -87,7 +87,14 @@ class BilikController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bilik = Bilik::find($id);
+
+        $senaraiBahagian = Bahagian::orderBy('nama', 'desc')->get();
+
+        return view('bilik.edit', [
+            'bilik' => $bilik,
+            'senaraiBahagian' => $senaraiBahagian
+        ]);
     }
 
     /**
