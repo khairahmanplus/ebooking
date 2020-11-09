@@ -38,4 +38,5 @@ Route::get('laman-utama', 'LamanUtamaController@lamanUtama')->name('laman-utama'
 // // Buang butiran bilik
 // Route::delete('bilik/{bilik}', 'BilikController@destroy');
 
+// RESTful
 Route::resource('bilik', 'BilikController');

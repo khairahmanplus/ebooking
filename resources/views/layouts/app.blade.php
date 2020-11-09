@@ -19,7 +19,10 @@
                 <ul class="navbar-nav mr-auto">
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="#">Laman Utama</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('bilik.index') }}">Bilik</a>
                         </li>
                     @endauth
                 </ul>
