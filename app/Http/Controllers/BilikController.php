@@ -106,7 +106,25 @@ class BilikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+            'bahagian' => [
+                'required',
+            ]
+        ]);
+        
+        $bilik = Bilik::find($id);
+
+        $bilik->update([
+            'nama'          => $request->input('nama'),
+            'id_bahagian'   => $request->input('bahagian'),
+        ]);
+
+        return redirect()->route('bilik.index');
     }
 
     /**
